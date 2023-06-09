@@ -13,19 +13,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
-    var storyBrain = StoryBrain() //creates a new instance of StoryBrain to tap into StoryBrain
     
-    @IBAction func choiceMade(_ sender: UIButton) { //when user presses a button
-        let userChoice = sender.currentTitle!
-        storyBrain.nextStory(userChoice)
-        updateUI()
-    }
+    var storyBrain = StoryBrain() //creates a new instance of StoryBrain to tap into StoryBrain
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        storyLabel.text = "You see a fork in the road."
-        choice1Button.setTitle("Take a left.", for: .normal)
-        choice2Button.setTitle("Take a right.", for: .normal)
+        
+        updateUI()
+    }
+    
+    @IBAction func choiceMade(_ sender: UIButton) { //when user presses a button
+        
+        storyBrain.nextStory(userChoice: sender.currentTitle!)
+        
+        updateUI()
     }
     
     @objc func updateUI() {
